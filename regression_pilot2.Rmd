@@ -1,0 +1,24 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(dplyr)
+library(tidyr)
+```
+
+
+```{r}
+df <- read.csv("./data/raw/__temp_bots_May04_16h22m05.1s/bonus_game.csv")
+bot_schedule_df <- read.csv("./data/raw/bot_schedule.csv")
+
+game_df <- df %>% select("participant.code", "player.decision", "subsession.round_number", "player.potential_payoff")
+game_df <- drop_na(game_df)
+game_df <- merge(game_df, bot_schedule_df, by.x =  "subsession.round_number", by.y = "round")
+```
+
+```{r}
+
+```
+
